@@ -1,24 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import GoogleMap, {withGoogleMaps} from "./Components/GoogleMap";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    const MyMapComponent = withGoogleMaps({
+        apiKey: "AIzaSyBuf35xtWpGx7xnZNT3vDM8xSwPj-OJdVg",
+        options: {
+            zoom: 8,
+            mapId: 'googleMaps',
+            markers: [],
+            center: {lat: 0.1540843, lng: 33.4099837},
+            onDrag: () => {
+
+            },
+            mapStyle: {
+                width: "100%",
+                height: 480,
+            },
+
+            onMapLoaded: (map: google.maps.Map) => {
+
+            }
+        }});
+
+  return (<div className="App">
+        <MyMapComponent />
     </div>
   );
 }
